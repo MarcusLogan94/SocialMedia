@@ -1,0 +1,16 @@
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\SocialMedia.Services.dll.config
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\SocialMedia.Services.dll
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\SocialMedia.Services.pdb
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\EntityFramework.dll
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\EntityFramework.xml
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.csprojAssemblyReference.cache
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.csproj.CoreCompileInputs.cache
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.csproj.CopyComplete
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.dll
+C:\Users\lab88\source\repos\SocialMedia\SocialMedia.Services\obj\Debug\SocialMedia.Services.pdb
