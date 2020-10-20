@@ -9,12 +9,15 @@ namespace SocialMedia.Data
 {
     public class CustomUser
     {
-        //[Key]
-        //public Guid Id { get; set; }
-        //[Required]
-        //public string Name { get; set; }
-        //[Required]
-        //public string Email { get; set; }
-        //public virtual ICollection<Post> PostsByUser { get; set; }
+        [Key]
+        public Guid UserId { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        public string Email { get; set; }
+
+
+
     }
 }
