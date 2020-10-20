@@ -8,11 +8,11 @@ namespace SocialMedia.Models
 {
     public class UserDetail
     {
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
-        public string Name { get; set; }
+        //public string Name { get; set; }
 
-        public string Email { get; set; }
-        public List<PostListItem> PostsByUser { get; set; }
+        //public string Email { get; set; }
+        //public List<PostListItem> PostsByUser { get; set; }
     }
 }

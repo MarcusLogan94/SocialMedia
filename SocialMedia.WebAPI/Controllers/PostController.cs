@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using SocialMedia.Models;
+using SocialMedia.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,10 @@ namespace SocialMedia.WebAPI.Controllers
         public IHttpActionResult Get(int id)
         {
             PostService postService = CreatePostService();
-            var note = postService.GetPostsById(id);
-            return Ok(note);
+            var post = postService.GetPostsById(id);
+            return Ok(post);
         }
-        public IHttpActionResult Post(CPost post)
+        public IHttpActionResult Post(PostCreate post)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -32,14 +33,14 @@ namespace SocialMedia.WebAPI.Controllers
         public IHttpActionResult Get()
         {
             PostService postService = CreatePostService();
-            var notes = postService.GetAllPosts();
-            return Ok(notes);
+            var posts = postService.GetAllPosts();
+            return Ok(posts);
         }
         private PostService CreatePostService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var noteService = new PostService(userId);
-            return noteService;
+            var postService = new PostService(userId);
+            return postService;
         }
         public IHttpActionResult Put(PostEdit post)
         {
@@ -48,7 +49,7 @@ namespace SocialMedia.WebAPI.Controllers
 
             var service = CreatePostService();
 
-            if (!service.UpdateNote(post))
+            if (!service.UpdatePost(post))
                 return InternalServerError();
 
             return Ok();
