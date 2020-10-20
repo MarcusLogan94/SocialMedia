@@ -17,7 +17,7 @@ namespace SocialMedia.Data
         [Required]
         public string Email { get; set; }
 
-
+        //commit comment 1
 
     }
 }
