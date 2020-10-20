@@ -18,7 +18,6 @@ namespace SocialMedia.Data
         public string Email { get; set; }
 
         //commit comment 1
-        //commit comment 2
 
     }
 }
