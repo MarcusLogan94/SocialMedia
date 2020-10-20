@@ -5,19 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialMedia.Data
+namespace SocialMedia.Models
 {
-    public class CustomUser
+    public class UserCreate
     {
-        [Key]
-        public Guid UserId { get; set; }
 
         [Required]
         public string UserName { get; set; }
-        [Required]
-        public string Email { get; set; }
-       
 
+        public string Email { get; set; }
 
     }
 }
