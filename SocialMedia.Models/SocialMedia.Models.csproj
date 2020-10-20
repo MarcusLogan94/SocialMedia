@@ -68,7 +68,6 @@
     <Compile Include="UserDetail.cs" />
     <Compile Include="UserEdit.cs" />
     <Compile Include="UserListItem.cs" />
-    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

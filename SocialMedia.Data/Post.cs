@@ -16,13 +16,12 @@ namespace SocialMedia.Data
         public string Title { get; set; }
         [Required]
         public string Text { get; set; }
-        //[Required]
-        //[ForeignKey(nameof(Poster))]
-        public Guid PosterId { get; set; }
-        //public  CustomUser Author { get; set; }
-        //public virtual ICollection<Comment> CommentsForPost { get; set; }
+ 
+        public CustomUser Author { get; set; }
+
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
+       
     }
 }

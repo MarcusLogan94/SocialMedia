@@ -27,16 +27,23 @@ namespace SocialMedia.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
         public DbSet<Post> Posts { get; set; }
+<<<<<<< HEAD
+
+        public DbSet<CustomUser> CustomUsers { get; set; }
+
+=======
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Reply> Replies { get; set; }
         //public DbSet<CustomUser> CustomUsers { get; set; }
+>>>>>>> origin/develop
         //public DbSet<Like> Likes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder

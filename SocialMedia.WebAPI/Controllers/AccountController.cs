@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using SocialMedia.Data;
+using SocialMedia.Models;
 using SocialMedia.WebAPI.Models;
 using SocialMedia.WebAPI.Providers;
 using SocialMedia.WebAPI.Results;
@@ -126,7 +128,7 @@ namespace SocialMedia.WebAPI.Controllers
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +261,9 @@ namespace SocialMedia.WebAPI.Controllers
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -329,7 +331,19 @@ namespace SocialMedia.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email };
+
+            var customUser = new UserCreate() { UserName = model.UserName, Email = model.Email };
+
+            //new code
+            //make new CustomUser (and save it to the CustomUser DB)
+
+            var service = CreateUserService();
+
+            if (!service.CreateUser(customUser))
+                return InternalServerError();
+
+            //already here
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -340,6 +354,14 @@ namespace SocialMedia.WebAPI.Controllers
 
             return Ok();
         }
+
+        private UserService CreateUserService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userService = new UserService(userId);
+            return userService;
+        }
+
 
         // POST api/Account/RegisterExternal
         [OverrideAuthentication]
@@ -369,7 +391,7 @@ namespace SocialMedia.WebAPI.Controllers
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
