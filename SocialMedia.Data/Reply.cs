@@ -10,9 +10,9 @@ namespace SocialMedia.Data
 
     {
         public int ReplyId { get; set; }
-        public string ReplyerId { get; set; }
+        //public string ReplyerId { get; set; }
         public CustomUser Replyer { get; set; }
-        public int CommentId { get; set; }
+        //public int CommentId { get; set; }
         public Comment Comment { get; set; }
     }
 }

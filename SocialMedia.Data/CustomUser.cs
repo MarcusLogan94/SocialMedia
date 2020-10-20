@@ -15,10 +15,10 @@ namespace SocialMedia.Data
         public string Name { get; set; }
         //[Required]
         public string Email { get; set; }
-        public ICollection<Post> PostsByUser { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Like> Likes { get; set; }
-        public ICollection<Reply> Replies { get; set; }
+        //public ICollection<Post> PostsByUser { get; set; }
+        //public ICollection<Comment> Comments { get; set; }
+        //public ICollection<Like> Likes { get; set; }
+        //public ICollection<Reply> Replies { get; set; }
        
     }
 }
