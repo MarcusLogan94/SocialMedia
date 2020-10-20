@@ -18,10 +18,12 @@ namespace SocialMedia.Services
 
         public bool CreatePost(PostCreate model)
         {
+            var service = CreateUserService();
+
             var entity =
                 new Post()
                 {
-                    PosterId = _userId,
+                    Author = service.GetUserByGUID(_userId),
                     Title = model.Title,
                     Text = model.Text,
                     CreatedUtc = DateTimeOffset.Now
@@ -44,40 +46,42 @@ namespace SocialMedia.Services
                            PostId = m.PostId,
                            Title = m.Title,
                            Text = m.Text,
-                           //AuthorId = m.PosterId,
-                           //PosterName = m.Poster.Name
+                           AuthorName = m.Author.Name
                        });
                 return query.ToList();
             }
         }
 
-        public IEnumerable<PostListItem> GetPostsById(int id)
+        public PostDetail GetPostById(int id)
         {
+            //var service = CreateUserService();
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Posts
-                       .Where(p => p.PosterId == _userId)
-                       .Select(m => new PostListItem
-                       {
-                           PostId = m.PostId,
-                           Title = m.Title,
-                           Text = m.Text,
-                           //CreatedUtc = entity.CreatedUtc,
-                           //ModifiedUtc = entity.ModifiedUtc
-                           //PosterId = m.PosterId,
-                           //PosterName = m.Poster.Name
-                       });
-                return query.ToList();
+                var entity =
+                         ctx
+                         .Posts
+                         .Single(e => e.PostId == id);
+                return
+                    new PostDetail
+                    {
+                        PostId = entity.PostId,
+                        Title = entity.Title,
+                        Text = entity.Text,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+
             }
         }
         public bool UpdatePost(PostEdit model)
         {
+            var service = CreateUserService();
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == model.PostId && e.PosterId == _userId);
+                        .Single(e => e.PostId == model.PostId && e.Author == service.GetUserByGUID(_userId));
 
 
                 entity.Title = model.Title;
@@ -90,12 +94,13 @@ namespace SocialMedia.Services
 
         public bool DeletePost(int postId)
         {
+            var service = CreateUserService();
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Posts
-                        .Single(e => e.PostId == postId && e.PosterId == _userId);
+                        .Single(e => e.PostId == postId && e.Author == service.GetUserByGUID(_userId));
 
                 ctx.Posts.Remove(entity);
 
