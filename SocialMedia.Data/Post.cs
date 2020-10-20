@@ -22,6 +22,6 @@ namespace SocialMedia.Data
         public DateTimeOffset CreatedUtc { get; set; }
 
         public DateTimeOffset? ModifiedUtc { get; set; }
-       
+       //
     }
 }
