@@ -16,8 +16,8 @@ namespace SocialMedia.Data
         public string UserName { get; set; }
         [Required]
         public string Email { get; set; }
-       
 
+        //commit comment 1
 
     }
 }

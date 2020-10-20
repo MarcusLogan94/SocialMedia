@@ -54,8 +54,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+    <Compile Include="UserService.cs" />
+=======
+    <Compile Include="ReplyService.cs" />
+>>>>>>> origin/develop
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
