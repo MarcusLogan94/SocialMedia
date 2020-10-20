@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LikeCreate.cs" />
     <Compile Include="PostCreate.cs" />
     <Compile Include="PostDetail.cs" />
     <Compile Include="PostEdit.cs" />
